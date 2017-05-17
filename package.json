@@ -1,0 +1,21 @@
+{
+  "name": "wb-rest",
+  "version": "0.1.0",
+  "description": "Simple abstraction over express to create RESTful APIs.",
+  "main": "src/index.ts",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "http",
+    "server"
+  ],
+  "author": "Nicolas Gonzalvez",
+  "license": "MIT"
+}
