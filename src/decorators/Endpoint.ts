@@ -1,9 +1,10 @@
 import * as express from 'express';
+import {IEndpoint} from '../base/IEndpoint';
 
 
-export default function Endpoint(url) {
-  return cls => {
-    cls.routes = express.Router();
+export function Endpoint(url : string) {
+  return (cls : IEndpoint) => {
+    cls.url = url;
 
     // TODO: Figure out if this line is really necessary.
     return cls;

@@ -1,14 +1,14 @@
-import {Router} from 'express';
+import {Router, Response} from 'express';
 
 
-export default function AccessControl(...roles: Array<string>) : Function {
-  return (endpoint, methodName) {
-    endpoint[methodName] = function(req, res, next) {
-      if (Array.prototype.includes.call(roles, req.user.role)) {
+export function AccessControl(...roles: Array<string>) : Function {
+  return (endpoint : any, methodName : string) => {
+    endpoint[methodName] = function(req : any, res : Response, next : Function) {
+      if (roles.includes(req.user.role)) {
         return endpoint[methodName](req, res, next);
       }
 
       next();
-    };
+    }
   }
 }

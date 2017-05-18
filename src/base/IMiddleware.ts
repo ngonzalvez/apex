@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 
 
-interface Middleware {
+export interface IMiddleware {
   (req: Request, res: Response, next: Function) : void
 }

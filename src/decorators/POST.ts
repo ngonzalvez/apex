@@ -1,10 +1,11 @@
 import {Router} from 'express';
 
 
-export default function POST(url: string) : Function {
-  return (endpoint, methodName) {
-    const fn = endpoint[methodName].bind(endpoint);
+export function POST(url: string) : Function {
+  return (endpoint : any, methodName : string) => {
+    const fn : Function = endpoint[methodName].bind(endpoint);
 
+    endpoint.routes = endpoint.routes || Router();
     endpoint.routes.post(url, fn);
 
     // TODO: Figure out if we really need this line.
