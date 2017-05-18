@@ -8,7 +8,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p ./",
+    "watch": "tsc -p ./ --watch"
   },
   "keywords": [
     "rest",
@@ -19,8 +21,15 @@
   "author": "Nicolas Gonzalvez",
   "license": "MIT",
   "dependencies": {
+    "@types/bookshelf": "^0.9.1",
     "@types/express": "^4.0.35",
-    "express": "^4.15.2"
+    "@types/knex": "0.0.50",
+    "bookshelf": "^0.10.3",
+    "bookshelf-cascade-delete": "^2.0.1",
+    "bookshelf-modelbase": "^2.10.3",
+    "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "pg": "^6.2.2"
   },
   "devDependencies": {
     "@types/express": "^4.0.35",
