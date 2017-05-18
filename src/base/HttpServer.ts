@@ -33,9 +33,9 @@ export class HttpServer {
   /**
    * HttpServer constructor.
    *
-   * @param {HttpServerConfig} config   Web API configuration.
+   * @param {Object} config   Web API configuration.
    */
-  constructor(config : HttpServerConfig) {
+  constructor(config : any) {
     this.express = express();
     this.environment = config.environment;
     this.version = config.version;
@@ -59,8 +59,13 @@ export class HttpServer {
    * @param {string} port   Port on which the server will be listening to.
    * @param {string} host   The host IP/name for the serve.
    */
-  public async listen(port : number, host : string, cb : Function) : Promise<void> {
+  public async listen(port : number, host : string) : Promise<Object> {
     const server = http.createServer(this.express);
-    await server.listen(port, host, cb);
+
+    return new Promise((resolve, reject) => {
+      server
+        .listen(port, host, resolve)
+        .on('error', reject);
+    });
   }
 }

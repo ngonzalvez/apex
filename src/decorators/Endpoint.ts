@@ -2,7 +2,7 @@ import * as express from 'express';
 import {IEndpoint} from '../base/IEndpoint';
 
 
-export function Endpoint(url : string) {
+export function Endpoint(url : string) : Function {
   return (cls : IEndpoint) => {
     cls.url = url;
 

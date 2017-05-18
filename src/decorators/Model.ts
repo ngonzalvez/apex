@@ -1,10 +1,6 @@
-export function Model(db : any) {
-  return (cls : Function) => {
-    // Register the model class in the Bookshelf model registry.
-    db.model(cls.name, cls);
-
-    // TODO: Figure out if this line is really necessary.
-    return cls;
+export function Model(Database : any) : Function {
+  return (cls : Function) : void => {
+    Database.orm.model(cls.name, cls);
   }
 }
 
