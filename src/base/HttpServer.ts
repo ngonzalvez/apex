@@ -48,7 +48,6 @@ export class HttpServer {
 
     for (let name in config.endpoints) {
       const endpoint = config.endpoints[name];
-      console.log(`/${config.version}/${endpoint.url}`);
       this.express.use(`/${config.version}/${endpoint.url}`, endpoint.routes);
     }
   }
