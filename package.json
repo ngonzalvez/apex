@@ -29,11 +29,7 @@
     "bookshelf-modelbase": "^2.10.3",
     "express": "^4.15.2",
     "knex": "^0.13.0",
-    "pg": "^6.2.2"
-  },
-  "devDependencies": {
-    "@types/express": "^4.0.35",
-    "tsc": "^1.20150623.0",
+    "pg": "^6.2.2",
     "typescript": "^2.3.2"
   }
 }
