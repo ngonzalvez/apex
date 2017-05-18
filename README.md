@@ -53,9 +53,9 @@ const server = new HttpServer({
 
 // Start the HTTP server.
 server
-	.listen(8080, 'localhost')
-	.then(() => console.log('Server running on port 8080'))
-	.catch(err => console.log(`Oops! Something went wrong: ${err.message}`));
+  .listen(8080, 'localhost')
+  .then(() => console.log('Server running on port 8080'))
+  .catch(err => console.log(`Oops! Something went wrong: ${err.message}`));
 ~~~
 
 If you run this code you should see the message `Server running on port 8080` on your terminal. Try opening `http://localhost:8080/v1/greetings/say-hello` and you should see the greeting message.
@@ -80,9 +80,9 @@ const server = new HttpServer({
 
 // Start the HTTP server.
 server
-	.listen(8080, 'localhost')
-	.then(() => console.log('Server running on port 8080'))
-	.catch(err => console.log(`Oops! Something went wrong: ${err.message}`));
+  .listen(8080, 'localhost')
+  .then(() => console.log('Server running on port 8080'))
+  .catch(err => console.log(`Oops! Something went wrong: ${err.message}`));
 ~~~
 
 
@@ -107,7 +107,7 @@ export default class UsersEndpoint {
 }
 ~~~
 
-But, of course, until here we only have an empty endpoint which does nothing, let's add some functionality to it. Let's say we want to return a hard-coded list of names when we perform a GET request to `/v1/users/`. 
+But, of course, we only have an empty endpoint which does nothing, let's add some functionality to it. Let's say we want to return a hard-coded list of names when we perform a GET request to `/v1/users/`. 
 
 We can do that by using the **@GET** decorator form *wb-rest*. Let's add a `getAll()` method to the endpoint.
 
@@ -116,11 +116,11 @@ import {Endpoint, GET} from 'wb-rest';
 
 @Endpoint('users')
 export default class UsersEndpoint {
-	@GET('/')
-	public static getAll(req, res) {
-      	const names = ['Nick', 'John', 'Ann', 'Dean'];
-        res.send(JSON.stringify(names));      
-	}
+  @GET('/')
+  public static getAll(req, res) {
+    const names = ['Nick', 'John', 'Ann', 'Dean'];
+    res.send(JSON.stringify(names));      
+  }
 }
 ~~~
 
