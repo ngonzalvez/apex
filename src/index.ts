@@ -1,6 +1,7 @@
 // Base clases.
 export {HttpServer} from './base/HttpServer';
 export {Database} from './base/Database';
+export {Logger} from './base/Logger';
 
 // Interfaces.
 export {IMiddleware} from './base/IMiddleware';

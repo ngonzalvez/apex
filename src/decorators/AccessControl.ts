@@ -1,14 +1,27 @@
 import {Router, Response} from 'express';
 
 
-export function AccessControl(...roles: Array<string>) : Function {
-  return (endpoint : any, methodName : string) => {
+export function AccessControl(role: string) : Function {
+  return (endpoint : any, methodName : string) : void => {
+    const fn = endpoint[methodName].bind(endpoint);
+
     endpoint[methodName] = function(req : any, res : Response, next : Function) {
-      if (roles.includes(req.user.role)) {
-        return endpoint[methodName](req, res, next);
+      // Not authenticated.
+      if (req.user === undefined) {
+        console.log('Not  auth');
+        res.status(401).send({ error: 'Authentication required' });
+        return;
       }
 
-      next();
+      // Not authorized.
+      else if (!req.user.scopes.includes(role)) {
+        console.log('No scope');
+        res.status(403).send({ error: 'Forbidden' });
+        return;
+      }
+
+      // Access granted.
+      fn(req, res, next);
     }
   }
 }

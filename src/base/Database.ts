@@ -6,7 +6,8 @@ const BOOKSHELF_PLUGINS = [
   require('bookshelf-modelbase').pluggable,
   require('bookshelf-cascade-delete'),
   'registry',
-  'pagination'
+  'pagination',
+  'visibility'
 ];
 
 export class MigrationsManager {
@@ -50,6 +51,10 @@ export class Database {
 
     Database.Model = Database.orm.Model;
     Database.migrations = new MigrationsManager(Database.knex, config.migrations);
+  }
+
+  public static transaction(fn : any) : any {
+    return Database.orm.transaction(fn);
   }
 
 }
