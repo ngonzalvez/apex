@@ -28,6 +28,7 @@
     "bookshelf-cascade-delete": "^2.0.1",
     "bookshelf-modelbase": "^2.10.3",
     "express": "^4.15.2",
+    "express-boom": "^2.0.0",
     "knex": "^0.13.0",
     "pg": "^6.2.2",
     "pretty-error": "^2.1.0",
