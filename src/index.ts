@@ -7,10 +7,15 @@ export {Logger} from './base/Logger';
 export {IMiddleware} from './base/IMiddleware';
 
 // Decorators.
-export {AccessControl} from './decorators/AccessControl';
-export {Catch} from './decorators/Catch';
-export {Endpoint} from './decorators/Endpoint';
 export {Model} from './decorators/Model';
+
+export {Endpoint} from './decorators/Endpoint';
+export {RequiredScope} from './decorators/RequiredScope';
+export {Description} from './decorators/Description';
+export {ErrorMessage} from './decorators/ErrorMessage';
+export {QueryParam} from './decorators/QueryParam';
+export {BodyField} from './decorators/BodyField';
+
 export {GET} from './decorators/GET';
 export {POST} from './decorators/POST';
 export {PUT} from './decorators/PUT';

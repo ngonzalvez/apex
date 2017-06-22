@@ -1,19 +1,21 @@
 // Node modules.
 import * as express from 'express';
 import * as http from 'http';
+import * as path from 'path';
 import * as boom from 'express-boom';
 
 // WhiteBear modules.
 import {IMiddleware} from './IMiddleware';
 import {IEndpoint} from './IEndpoint';
 import {Endpoint} from '../decorators/Endpoint';
+import {AdminPanel} from './AdminPanel';
 
 
-const DEFAULT_PLUGINS = [
+const DEFAULT_PLUGINS : Array<any> = [
   boom()
 ];
 
-const DEFAULT_MIDDLEWARES = [];
+const DEFAULT_MIDDLEWARES : Array<any> = [];
 
 /**
  * HTTP Server configuration.
@@ -50,6 +52,7 @@ export class HttpServer {
     this.registerPlugins(config.plugins);
     this.registerMiddlewares(config.middlewares);
     this.registerEndpoints(config.endpoints);
+    this.initAdminPanel(config.endpoints);
   }
 
   /**
@@ -61,7 +64,7 @@ export class HttpServer {
     let i;
 
     for (i = 0; i < DEFAULT_PLUGINS.length; i++) {
-      this.express.use(DEFAULT_PLUGIN[i]);
+      this.express.use(DEFAULT_PLUGINS[i]);
     }
 
     if (plugins) {
@@ -98,8 +101,23 @@ export class HttpServer {
   public registerEndpoints(endpoints : Array<any>) : void {
     for (let name in endpoints) {
       const endpoint = endpoints[name];
-      this.express.use(`/${config.version}/${endpoint.url}`, endpoint.routes);
+      this.express.use(`/${this.version}/${endpoint.url}`, endpoint.routes);
     }
+  }
+
+  /**
+   * Initialize the admin panel.
+   *
+   * @param {Array<any>} endpoints  An array of endpoints.
+   */
+  public initAdminPanel(endpoints : Array<any>) : void {
+    const admin = new AdminPanel(endpoints, this.version);
+
+    this.express.use('/static', express.static(path.join(__dirname, '../public')));
+    this.express.set('views', path.join(__dirname, '../views'));
+    this.express.set('view engine', 'ejs');
+
+    this.express.use(`/${this.version}/admin`, admin.routes);
   }
 
   /**

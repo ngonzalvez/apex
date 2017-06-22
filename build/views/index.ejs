@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="/static/styles.css">
+        <script src="/static/admin.js"></script>
+    </head>
+
+    <body>
+        <aside>
+            <h1>
+                <a href="/<%= version %>/admin">API Explorer</a>
+            </h1>
+
+            <ul class="endpoints-list">
+                <% endpoints.forEach(function(endpoint) { %>
+                    <li>
+                        <a href="/<%= version %>/admin/<%= endpoint.url %>">
+                            /<%= endpoint.url %>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </aside>
+
+        <main>
+            <%- include(page) %>
+        </main>
+    </body>
+</html>

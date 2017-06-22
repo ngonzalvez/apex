@@ -1,0 +1,122 @@
+<section id="action">
+    <h1 class="title">
+        <span class="method <%= action.method %>"><%= action.method %></span>
+        <%= action.url %>
+    </h1>
+
+    <p>
+        <%= action.description %>.
+    </p>
+
+
+    <% if (action.headers.length) { %>
+        <h3>Headers</h3>
+        <div class="form headers">
+            <% action.headers.forEach(function(header) { %>
+                <div class="field">
+                    <label for="header-<%= header %>">
+                        <%= header %>
+                    </label>
+
+                    <div class="container">
+                        <div class="row">
+                            <input type="text"
+                                   name="header-<%= header %>"
+                                   value="Bearer da3e9e2ae7e6429a8d389aa2ab607a02"/>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <% if (action.queryParams) { %>
+        <h3>URL Params</h3>
+        <div class="form query-params">
+            <% for (var param in action.queryParams) { %>
+                <div class="field">
+                    <label for="query-<%= param %>">
+                        <%= param %>
+                        <span class="type">
+                            (<%= action.queryParams[param].type %>)
+                        </span>
+                    </label>
+
+                    <p><%= action.queryParams[param].description %>.</p>
+
+                    <div class="container">
+                        <div class="row">
+                            <input type="text"
+                                   name="query-<%= param %>"
+                                   value=""/>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+
+    <% if (action.bodyFields) { %>
+        <h3>Body</h3>
+
+        <div class="form body">
+            <% for (var field in action.bodyFields) { %>
+                <div class="field">
+                    <label for="body-<%= field %>">
+                        <%= field %>
+                        <span class="type">
+                            (<%= action.bodyFields[field].type %>)
+                        </span>
+
+                        <% if (action.bodyFields[field].isArray) { %>
+                            <span class="addNew"
+                                  onclick="addInputField('<%= field %>')">
+                                Add new
+                            </span>
+                        <% } %>
+                    </label>
+
+                    <p><%= action.bodyFields[field].description %>.</p>
+
+                    <div class="container"
+                         data-field="<%= field %>">
+                         <div class="row">
+                            <% if (action.bodyFields[field].type === 'boolean') { %>
+                                <input type="checkbox"
+                                       name="body-<%= field %>"
+                                       value=""/>
+                            <% } else { %>
+                                <input type="text"
+                                       name="body-<%= field %>"
+                                       value=""/>
+                            <% } %>
+
+                            <% if (action.bodyFields[field].isArray) { %>
+                                <span class="remove"
+                                      onclick="removeRow('<%= field %>')">
+                                    X
+                                </span>
+                            <% } %>
+                         </div>
+
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+    <% } %>
+
+    <script>
+        var action = <%- JSON.stringify(action) %>;
+        var BASE_URL = "/<%= version %>";
+    </script>
+
+    <button onclick=performAction()>Submit</button>
+</section>
+
+<aside id="response">
+    <h1>HTTP Response</h1>
+
+    <span id="status"></span>
+    <pre id="code"></pre>
+</aside>

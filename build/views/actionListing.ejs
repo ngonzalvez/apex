@@ -1,0 +1,30 @@
+<section id="actions">
+    <h1>/<%= endpoint.url  %></h1>
+
+    <ul class="list">
+        <% actions.forEach(function(action) { %>
+            <li>
+                <header>
+                    <span class="method <%= action.method %>">
+                        <%= action.method %>
+                    </span>
+
+                    <span class="name">
+                        <%= action.url %>
+                    </span>
+
+                    <a href="/<%= version %>/admin/<%= endpoint.url %>/<%= action.name %>"
+                       class="see-form">
+                        See form
+                    </a>
+
+                    </a>
+                </header>
+
+                <p class="description">
+                    <%= action.description %>
+                </p>
+            </li>
+        <% }) %>
+    </ul>
+</section>

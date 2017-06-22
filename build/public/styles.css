@@ -1,0 +1,294 @@
+* {
+    font-family: Lato;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    outline: none;
+}
+
+body {
+    display: flex;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+aside {
+    background: #495469;
+    color: #d0d0d0;
+    width: 300px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+aside a {
+    text-decoration: none;
+    color: #d0d0d0;
+}
+
+aside h1 {
+    font-weight: 800;
+    margin-bottom: 1em;
+    font-size: 25px;
+}
+
+aside ul li {
+    font-size: 16px;
+    list-style: none;
+    transition: background 250ms;
+}
+
+aside ul li:hover {
+    background: #697489;
+    cursor: pointer;
+}
+
+aside ul li a {
+    display: block;
+    padding: 10px 15px;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    font-size: 18px;
+}
+
+main h1 {
+    margin-bottom: 2em;
+}
+
+#response {
+    color: #aaa;
+    width: 800px;
+    background: #444448;
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+#response h1 {
+    font-weight: 400;
+}
+
+#response #code {
+    border: 2px solid #666;
+    padding: 20px;
+    line-height: 1.5em;
+    font-size: 14;
+    min-height: 500px;
+    font-family: monospace;
+    overflow: auto;
+}
+
+#response #status {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#action,
+#actions {
+    padding: 50px 100px;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#actions li {
+    list-style: none;
+    margin: 20px 0;
+}
+
+#actions .list {
+    width: 800px;
+}
+
+#actions .list li header {
+    background: #eeeff0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    line-height: 2em;
+}
+
+#actions .name {
+    flex-grow: 1;
+}
+
+#actions .see-form {
+    flex-grow: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
+    color: #888;
+    cursor: pointer;
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+#actions .method {
+    flex-grow: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: #eee;
+    text-transform: uppercase;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    width: 80px;
+    margin-right: 20px;
+}
+
+#actions .get {
+    background: #1ABC9C;
+}
+
+#actions .post {
+    background: #62A8EA;
+}
+
+#actions .put,
+#actions .patch {
+    background: #F0AD4E;
+}
+
+#actions .delete {
+    background: #F96868;
+}
+
+#actions .description {
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    padding: 15px;
+}
+
+#action .title {
+    display: flex;
+}
+
+#action .title .method {
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-right: 15px;
+    color: #eee;
+    font-weight: 600;
+}
+
+#action .get { background: #1ABC9C; }
+#action .post { background: #62A8EA; }
+#action .put,
+#action .patch { background: #F0AD4E; }
+#action .delete { background: #F96868; }
+
+#action h3 {
+    color: #557;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+#action .form {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 0 5px #fafafa;
+}
+
+#action .form label,
+#action .form p.description,
+#action .form input {
+    display: block;
+}
+
+#action .form p:first-letter {
+    text-transform: uppercase;
+}
+
+#action .form label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #779;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+#action .form label:first-letter {
+    font-size: 15px;
+}
+
+#action .form label .type {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+#action .form .row {
+    display: flex;
+}
+
+#action .form input {
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 5px;
+    border: 0;
+    border-bottom: 2px solid #ddd;
+}
+
+#action .form input[type=checkbox] {
+    flex-grow: 0;
+    margin-top: 10px;
+}
+
+
+#action .form .row .remove {
+    position: relative;
+    top: 10px;
+    font-size: 12px;
+    color: #79b;
+    border: 2px solid #79b;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+
+#action .field:not(:first-of-type) {
+    margin-top: 30px;
+}
+
+#action .addNew {
+    margin-left: 20px;
+    color: #79b;
+    border: 2px solid #79b;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    top: 5px;
+    text-transform: uppercase;
+}
+
+button {
+    color: white;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    min-width: 150px;
+    background: #abd;
+    border: 0;
+    border-radius: 10px;
+    margin-top: 40px;
+}

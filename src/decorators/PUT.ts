@@ -1,14 +1,6 @@
-import {Router} from 'express';
+import {registerEndpoint} from '../utils';
 
 
 export function PUT(url: string) : Function {
-  return (endpoint : any, methodName : string) => {
-    const fn : Function = endpoint[methodName].bind(endpoint);
-
-    endpoint.routes = endpoint.routes || Router();
-    endpoint.routes.put(url, fn);
-
-    // TODO: Figure out if we really need this line.
-    return fn;
-  }
+  return registerEndpoint.bind(null, 'put', url);
 }
