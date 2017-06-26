@@ -1,6 +1,6 @@
 {
   "name": "wb-rest",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Simple abstraction over express to create RESTful APIs.",
   "main": "build/index.js",
   "directories": {
