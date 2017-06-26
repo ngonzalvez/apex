@@ -30,7 +30,7 @@ export class MigrationsManager {
 
 
 export class Database {
-  public static knex : Knex;
+  public static knex : any;
   public static orm : Bookshelf;
   public static Model : typeof Bookshelf.Model;
   public static migrations : MigrationsManager;
