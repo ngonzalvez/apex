@@ -11,7 +11,7 @@ const BOOKSHELF_PLUGINS = [
 ];
 
 export class MigrationsManager {
-  private knex : Knex;
+  private knex : any;
   private config : any;
 
   constructor(knex : Knex, config : any) {
