@@ -1,5 +1,5 @@
 {
-  "name": "wb-rest",
+  "name": "apex",
   "version": "0.2.4",
   "description": "Simple abstraction over express to create RESTful APIs.",
   "main": "build/index.js",

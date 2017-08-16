@@ -1,4 +1,4 @@
-# wb-rest
+# apex
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-*wb-rest* is a library designed to ease the creation of REST HTTP APIs in *node.js* with Typescript. It tries to take away all the pain involved in developing an API (such as structuring the project, defining the models and the relationships between them) and, at the same time, this library tries to reduce the amount of code required to do so.
+*apex* is a library designed to ease the creation of REST HTTP APIs in *node.js* with Typescript. It tries to take away all the pain involved in developing an API (such as structuring the project, defining the models and the relationships between them) and, at the same time, this library tries to reduce the amount of code required to do so.
 
 The way it achieves its goal is by providing you with base classes, helpers and decorators to define endpoints, database models, routing and so on.
 
@@ -14,10 +14,10 @@ The way it achieves its goal is by providing you with base classes, helpers and 
 
 ### Installation
 
-In order to install *wb-rest* simply run:
+In order to install *apex* simply run:
 
 ~~~
-npm install --save wb-rest
+npm install --save apex
 ~~~
 
 if you are using Typescript, you may want to add the typings folder to the "typeRoots" array in your tsconfig.json.
@@ -29,7 +29,7 @@ if you are using Typescript, you may want to add the typings folder to the "type
 Let's see an example of the simplest API we can build using this library, so that you can get a glance of how it works.
 
 ~~~typescript
-import {HttpServer, Endpoint, GET} from 'wb-rest';
+import {HttpServer, Endpoint, GET} from 'apex';
 
 // Let's define a very simple endpoint.
 @Endpoint('greetings')
@@ -60,14 +60,14 @@ server
 
 If you run this code you should see the message `Server running on port 8080` on your terminal. Try opening `http://localhost:8080/v1/greetings/say-hello` and you should see the greeting message.
 
-# 
+#
 
-### Creating an HTTP Server 
+### Creating an HTTP Server
 
-Creating an HTTP API with *wb-rest* is quite straigt-forward. Simply import the HttpServer class and instance it including your endpoints (we'll talk about this in the following section) in the config.
+Creating an HTTP API with *apex* is quite straigt-forward. Simply import the HttpServer class and instance it including your endpoints (we'll talk about this in the following section) in the config.
 
 ~~~typescript
-import {HttpServer} from 'wb-rest';
+import {HttpServer} from 'apex';
 
 // Import your own middlewares and endpoints.
 import UsersEndpoint from './endpoints/UsersEndpoint';
@@ -89,7 +89,7 @@ server
 
 ### Creating an Endpoint
 
-An endpoint is simply a class whose methods are all *public static*. The class represents a resource in our REST API. Also, this class must be decorated with the **Endpoint** decorator. This decorator takes a string which will be the name of the resource in the API. 
+An endpoint is simply a class whose methods are all *public static*. The class represents a resource in our REST API. Also, this class must be decorated with the **Endpoint** decorator. This decorator takes a string which will be the name of the resource in the API.
 
 In this case we'll be implementing the Users endpoint, so the name of the resource will be *users*. This means that this API endpoint will be accessible under the URL `http://localhost:8080/v1/users`.
 
@@ -99,7 +99,7 @@ Well, this is what we have so far.
 
 ~~~typescript
 // File: endpoints/UsersEndpoint.ts
-import {Endpoint} from 'wb-rest';
+import {Endpoint} from 'apex';
 
 @Endpoint('users')
 export default class UsersEndpoint {
@@ -107,26 +107,26 @@ export default class UsersEndpoint {
 }
 ~~~
 
-But, of course, we only have an empty endpoint which does nothing, let's add some functionality to it. Let's say we want to return a hard-coded list of names when we perform a GET request to `/v1/users/`. 
+But, of course, we only have an empty endpoint which does nothing, let's add some functionality to it. Let's say we want to return a hard-coded list of names when we perform a GET request to `/v1/users/`.
 
-We can do that by using the **@GET** decorator form *wb-rest*. Let's add a `getAll()` method to the endpoint.
+We can do that by using the **@GET** decorator form *apex*. Let's add a `getAll()` method to the endpoint.
 
 ~~~typescript
-import {Endpoint, GET} from 'wb-rest';
+import {Endpoint, GET} from 'apex';
 
 @Endpoint('users')
 export default class UsersEndpoint {
   @GET('/')
   public static getAll(req, res) {
     const names = ['Nick', 'John', 'Ann', 'Dean'];
-    res.send(JSON.stringify(names));      
+    res.send(JSON.stringify(names));
   }
 }
 ~~~
 
 You may have noticed that the method signature is pretty similar to what you would do if you were using *express* framework directly. You'll receive the *request* and *response* params and optionally a third param: *next*.
 
-*wb-rest* also provides the **@POST**, **@PUT**, **@PATCH** and **@DELETE** decorators and they work the same way as **@GET**.
+*apex* also provides the **@POST**, **@PUT**, **@PATCH** and **@DELETE** decorators and they work the same way as **@GET**.
 
 
 
